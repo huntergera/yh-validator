@@ -1,0 +1,31 @@
+{
+  "name": "yh-validator",
+  "version": "1.0.0",
+  "description": "A lightweight form validation library with modular functions",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "keywords": [
+    "validator",
+    "validation",
+    "javascript",
+    "typescript",
+    "form validation",
+    "agnostic"
+  ],
+  "author": "Yurii Hieorhiu <yuriihieorhiu@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "phone": "^3.1.62"
+  }
+}
