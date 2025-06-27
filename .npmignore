@@ -1,5 +1,15 @@
-# Logs
-logs
+# Exclude source files
+src/
+tests/
+*.test.ts
+
+# Exclude unnecessary directories
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+
+# Exclude logs and temporary files
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,22 +17,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
+# Exclude IDE/project files
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-tests/
-*.test.ts
+# Exclude Git-specific files
 .gitignore
