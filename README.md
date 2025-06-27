@@ -35,7 +35,7 @@ console.log(validateEmail('invalid-email'));    // false
 
 ### 📞 Validate Phone Number
 ```
-import { validatePhone } from '@your-scope/validator-lib';
+import { validatePhone } from 'yh-validator';
 
 // With international format
 console.log(validatePhone('+380961234567')); // true
@@ -80,6 +80,7 @@ tests/
 
 ## 📄 License
 MIT
+This project is licensed under the [MIT License](https://github.com/huntergera/yh-validator/blob/master/LICENSE).
 
 
 ## 📫 Contact
