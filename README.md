@@ -60,6 +60,8 @@ Validates international phone numbers. If no `countryCode` is provided, assumes 
 
 `countryCode` — (optional) ISO 2-letter country code (e.g. `"US"`, `"UA"`)
 
+Internally uses the [`phone`](https://www.npmjs.com/package/phone) library.
+
 ## 🧪 Running Tests
 ```
 npm test
