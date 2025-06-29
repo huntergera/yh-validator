@@ -1,8 +1,17 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-	entry: ['src/index.ts'],
-	format: ['esm', 'cjs'],
+	entry: {
+		index: 'src/index.ts',
+		isEmail: 'src/isEmail.ts',
+		isPhone: 'src/isPhone.ts',
+		isStrongPassword: 'src/isStrongPassword.ts',
+	},
+	format: ['cjs', 'esm'],
 	dts: true,
-	clean: true
+	splitting: true,
+	clean: true,
+	minify: true,
+	treeshake: true,
+	external: ['phone'],
 });

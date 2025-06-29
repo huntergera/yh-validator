@@ -1,21 +1,58 @@
 {
   "name": "yh-validator",
-  "version": "1.0.1",
+  "version": "2.0.2",
   "description": "A lightweight form validation library with modular functions",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./isEmail": {
+      "import": "./dist/isEmail.js",
+      "require": "./dist/isEmail.cjs",
+      "types": "./dist/isEmail.d.ts"
+    },
+    "./isPhone": {
+      "import": "./dist/isPhone.js",
+      "require": "./dist/isPhone.cjs",
+      "types": "./dist/isPhone.d.ts"
+    },
+    "./isStrongPassword": {
+      "import": "./dist/isStrongPassword.js",
+      "require": "./dist/isStrongPassword.cjs",
+      "types": "./dist/isStrongPassword.d.ts"
+    }
+  },
   "keywords": [
     "validator",
     "validation",
     "javascript",
     "typescript",
     "form validation",
-    "agnostic"
+    "agnostic",
+    "email",
+    "phone",
+    "phone number",
+    "password",
+    "password strength",
+    "secure",
+    "security",
+    "client-side",
+    "utility",
+    "utils"
   ],
   "author": "Yurii Hieorhiu <yuriihieorhiu@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/huntergera/yh-validator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huntergera/yh-validator"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest"

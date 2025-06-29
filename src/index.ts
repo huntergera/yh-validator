@@ -1,2 +1,3 @@
-export { validateEmail } from './validateEmail';
-export { validatePhone } from './validatePhone';
+export { isEmail } from './isEmail';
+export { isPhone } from './isPhone';
+export { isStrongPassword } from './isStrongPassword';

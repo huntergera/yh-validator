@@ -1,18 +1,18 @@
-import { validateEmail } from "../src";
+import { isEmail } from "../src";
 import { describe, it, expect } from 'vitest';
 
-describe('validateEmail', () => {
+describe('isEmail', () => {
 	it('valid emails', () => {
-		expect(validateEmail('test@example.com')).toBe(true);
-		expect(validateEmail('user.name+tag+sorting@example.com')).toBe(true);
-		expect(validateEmail('user_name@example.co.uk')).toBe(true);
+		expect(isEmail('test@example.com')).toBe(true);
+		expect(isEmail('user.name+tag+sorting@example.com')).toBe(true);
+		expect(isEmail('user_name@example.co.uk')).toBe(true);
 	});
 
 	it('invalid emails', () => {
-		expect(validateEmail('plainaddress')).toBe(false);
-		expect(validateEmail('test@.com')).toBe(false);
-		expect(validateEmail('test@com')).toBe(false);
-		expect(validateEmail('@missinglocal.org')).toBe(false);
-		expect(validateEmail('missingdomain@.')).toBe(false);
+		expect(isEmail('plainaddress')).toBe(false);
+		expect(isEmail('test@.com')).toBe(false);
+		expect(isEmail('test@com')).toBe(false);
+		expect(isEmail('@missinglocal.org')).toBe(false);
+		expect(isEmail('missingdomain@.')).toBe(false);
 	});
 });
