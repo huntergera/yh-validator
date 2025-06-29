@@ -6,8 +6,9 @@ A lightweight, modular form validation library written in **TypeScript**, design
 
 ## 🚀 Features
 
-- ✅ Email validation
+- 📧 Email validation
 - 📞 International phone number validation (with country support)
+- 🔐 Configurable password strength validation
 - 🛠 Modular structure — import only what you need
 - 📦 Lightweight and dependency-minimized
 - 🔐 TypeScript-first with full type safety
@@ -26,7 +27,7 @@ yarn add yh-validator
 
 ## ⚠️ Tree-shaking notice
 To ensure optimal bundle size, import validators directly from their paths, for example:
-```
+```ts
 import { isEmail } from "yh-validator/isEmail";
 import { isPhone } from "yh-validator/isPhone";
 import { isStrongPassword } from "yh-validator/isStrongPassword";
@@ -34,7 +35,7 @@ import { isStrongPassword } from "yh-validator/isStrongPassword";
 
 ## ✨ Usage
 ### 📧 Validate Email
-```
+```ts
 import { isEmail } from 'yh-validator/isEmail';
 
 console.log(isEmail('test@example.com')); // true
@@ -42,7 +43,7 @@ console.log(isEmail('invalid-email'));    // false
 ```
 
 ### 📞 Validate Phone Number
-```
+```ts
 import { isPhone } from 'yh-validator/isPhone';
 
 // With international format
@@ -57,7 +58,7 @@ console.log(isPhone('12345')); // false
 
 ### 🔐 Validate Password Strength
 The `isStrongPassword` function returns an object containing `valid: boolean` and an `errors: string[]` array, providing detailed feedback on why a password might not meet the criteria.
-```
+```ts
 import { isStrongPassword } from 'yh-validator/isStrongPassword';
 
 // Basic usage with default options (min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char)
@@ -91,7 +92,7 @@ You can easily integrate `yh-validator` functions with popular schema validation
 
 ### Integrating with Zod
 (You'll need to install `zod`: `npm install zod`)
-```
+```ts
 import { z } from 'zod';
 import { isEmail } from 'yh-validator/isEmail';
 import { isStrongPassword } from 'yh-validator/isStrongPassword';
@@ -120,7 +121,7 @@ export const registrationSchema = z.object({
 
 ### Integrating with Yup
 (You'll need to install `yup`: `npm install yup`)
-```
+```ts
 import * as yup from 'yup';
 import { isEmail } from 'yh-validator/isEmail';
 import { isStrongPassword } from 'yh-validator/isStrongPassword';
@@ -191,7 +192,7 @@ Validates the strength of a password based on configurable criteria.
   - `errors:` An array of strings, each describing a failed validation criterion.
 
 `PasswordValidationOptions` Interface:
-```
+```ts
 interface PasswordValidationOptions {
     minLength?: number;       // Default: 8
     minUppercase?: number;    // Default: 1
@@ -201,7 +202,7 @@ interface PasswordValidationOptions {
 }
 ```
 `PasswordValidationResult` Interface:
-```
+```ts
 interface PasswordValidationResult {
     valid: boolean;   // True if all validation rules passed
     errors: string[]; // Array of error messages if validation failed
