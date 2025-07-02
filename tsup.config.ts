@@ -6,6 +6,7 @@ export default defineConfig({
 		isEmail: 'src/isEmail.ts',
 		isPhone: 'src/isPhone.ts',
 		isStrongPassword: 'src/isStrongPassword.ts',
+		isUsername: 'src/isUsername.ts',
 	},
 	format: ['cjs', 'esm'],
 	dts: true,

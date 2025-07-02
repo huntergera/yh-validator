@@ -1,4 +1,4 @@
-# 🔍yh-validator
+# 📦yh-validator
 
 A lightweight, modular form validation library written in **TypeScript**, designed to be framework-agnostic and easy to use in any JavaScript or TypeScript project.
 
@@ -9,6 +9,7 @@ A lightweight, modular form validation library written in **TypeScript**, design
 - 📧 Email validation
 - 📞 International phone number validation (with country support)
 - 🔐 Configurable password strength validation
+- 👤 Flexible username validation
 - 🛠 Modular structure — import only what you need
 - 📦 Lightweight and dependency-minimized
 - 🔐 TypeScript-first with full type safety
@@ -85,6 +86,41 @@ console.log(result3.errors);  // [] (valid based on custom relaxed rules)
 const result4 = isStrongPassword('tooShort', { minLength: 10 });
 console.log(result4.valid);   // false
 console.log(result4.errors);  // ["Password must be at least 10 characters long."]
+```
+
+### 👤 Validate Username
+The `isUsername` function provides configurable rules for validating usernames, returning a detailed result object.
+```ts
+import { isUsername } from 'yh-validator/isUsername';
+
+// Basic usage with default options (min 3, max 30, alphanumeric, dashes, underscores, periods allowed)
+const result1 = isUsername('john_doe123');
+console.log(result1.valid);  // true
+console.log(result1.errors); // []
+
+// Username too short
+const result2 = isUsername('ab');
+console.log(result2.valid);  // false
+console.log(result2.errors[0]); // ["Username must be at least 3 characters long."]
+
+// Username with disallowed characters (e.g., !)
+const result3 = isUsername('user!name');
+console.log(result3.valid);  // false
+console.log(result3.errors[0]); // ["Username contains disallowed characters."]
+
+// Custom options: allow spaces, longer minLength, specific blacklist
+const result4 = isUsername('My User Name', { 
+  minLength: 5, 
+  allowSpaces: true, 
+  blacklist: ['admin', 'guest'] 
+});
+console.log(result4.valid);  // true
+console.log(result4.errors); // []
+
+// Custom options: check against a specific blacklist
+const result5 = isUsername('admin', { blacklist: ['admin', 'root'] });
+console.log(result5.valid);  // false
+console.log(result5.errors); // ["Username is reserved or not allowed."]
 ```
 
 ## 🧩 Integration with Schema Validation Libraries
@@ -208,6 +244,44 @@ interface PasswordValidationResult {
     errors: string[]; // Array of error messages if validation failed
 }
 ```
+`isUsername(username: string, options?: UsernameValidationOptions): UsernameValidationResult`
+Validates a username based on configurable criteria, including length, allowed characters, and format.
+- `username` (string): The username string to validate.
+- `options` (object, optional): An object to customize validation criteria.
+  - `minLength` (number): Minimum total length of the username `(default: 3)`.
+  - `maxLength` (number): Maximum total length of the username `(default: 30)`.
+  - `allowSpaces` (boolean): Allow spaces within the username `(default: false)`.
+  - `allowDashes` (boolean): Allow hyphens - `(default: true)`.
+  - `allowUnderscores` (boolean): Allow underscores _ `(default: true)`.
+  - `allowPeriods` (boolean): Allow periods . `(default: true)`.
+  - `noLeadingTrailingSpecialChars` (boolean): Disallow special characters or spaces at the start or end `(default: true).
+  - `noConsecutiveSpecialChars` (boolean): Disallow two or more consecutive special characters like -- or __ `(default: true)`.
+  - `blacklist` (string[]): An array of usernames that are explicitly disallowed (case-insensitive) `(default: [])`.
+- Returns: `UserNameValidationResult` - An object `{ valid: boolean; errors: string[] }`.
+  - valid: true if the userName meets all criteria, false otherwise.
+  - errors: An array of strings, each describing a failed validation criterion.
+  
+`UserNameValidationOptions` Interface:
+```ts
+interface UserNameValidationOptions {
+  minLength?: number;
+  maxLength?: number;
+  allowSpaces?: boolean;
+  allowDashes?: boolean;
+  allowUnderscores?: boolean;
+  allowPeriods?: boolean;
+  noLeadingTrailingSpecialChars?: boolean;
+  noConsecutiveSpecialChars?: boolean;
+  blacklist?: string[];
+}
+```
+`UserNameValidationResult` Interface:
+```ts
+interface UserNameValidationResult {
+  valid: boolean;
+  errors: string[];
+}
+```
 
 ## 🧪 Running Tests
 ```
@@ -221,12 +295,14 @@ src/
 ├── isEmail.ts              # Email validator
 ├── isPhone.ts              # Phone validator
 ├── isPassworStrong.ts      # Password validator
+├── isUsername.ts           # userName validator
 └── index.ts                # Exports
 
 tests/
 ├── email.test.ts
 ├── password.test.ts
-└── phone.test.ts
+├── phone.test.ts
+└── userName.test.ts
 ```
 
 ## 📄 License

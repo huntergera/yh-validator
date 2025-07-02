@@ -1,6 +1,6 @@
 {
   "name": "yh-validator",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "A lightweight form validation library with modular functions",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -26,6 +26,11 @@
       "import": "./dist/isStrongPassword.js",
       "require": "./dist/isStrongPassword.cjs",
       "types": "./dist/isStrongPassword.d.ts"
+    },
+    "./isUsername": {
+      "import": "./dist/isUsername.js",
+      "require": "./dist/isUsername.cjs",
+      "types": "./dist/isUsername.d.ts"
     }
   },
   "keywords": [
@@ -44,7 +49,10 @@
     "security",
     "client-side",
     "utility",
-    "utils"
+    "utils",
+    "username",
+    "user",
+    "handle"
   ],
   "author": "Yurii Hieorhiu <yuriihieorhiu@gmail.com>",
   "license": "MIT",
