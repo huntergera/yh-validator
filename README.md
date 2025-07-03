@@ -10,6 +10,7 @@ A lightweight, modular form validation library written in **TypeScript**, design
 - 📞 International phone number validation (with country support)
 - 🔐 Configurable password strength validation
 - 👤 Flexible username validation
+- ↔️ Deep equality comparison for objects and arrays
 - 🛠 Modular structure — import only what you need
 - 📦 Lightweight and dependency-minimized
 - 🔐 TypeScript-first with full type safety
@@ -121,6 +122,13 @@ console.log(result4.errors); // []
 const result5 = isUsername('admin', { blacklist: ['admin', 'root'] });
 console.log(result5.valid);  // false
 console.log(result5.errors); // ["Username is reserved or not allowed."]
+```
+
+### ↔️ Deep Equality Comparison
+```ts
+import { isEqual } from 'yh-validator/isEqual';
+
+console.log(isEqual('hello', 'hello')); // true
 ```
 
 ## 🧩 Integration with Schema Validation Libraries
@@ -282,6 +290,10 @@ interface UserNameValidationResult {
   errors: string[];
 }
 ```
+`isEqual(a: string, b: string): boolean`
+- `a (string)`: The first value to compare.
+- `b (string)`: The second value to compare.
+- Returns: boolean - true if the two values are equal, false otherwise.
 
 ## 🧪 Running Tests
 ```
@@ -296,10 +308,12 @@ src/
 ├── isPhone.ts              # Phone validator
 ├── isPassworStrong.ts      # Password validator
 ├── isUsername.ts           # userName validator
+├── isEqual.ts              # equality comparison
 └── index.ts                # Exports
 
 tests/
 ├── email.test.ts
+├── isEqual.test.ts
 ├── password.test.ts
 ├── phone.test.ts
 └── userName.test.ts

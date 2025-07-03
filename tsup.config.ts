@@ -7,6 +7,7 @@ export default defineConfig({
 		isPhone: 'src/isPhone.ts',
 		isStrongPassword: 'src/isStrongPassword.ts',
 		isUsername: 'src/isUsername.ts',
+		isEqual: 'src/isEqual.ts',
 	},
 	format: ['cjs', 'esm'],
 	dts: true,
