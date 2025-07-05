@@ -1,4 +1,7 @@
 # 📦yh-validator
+[![npm version](https://img.shields.io/npm/v/yh-validator.svg)](https://www.npmjs.com/package/yh-validator)
+[![npm downloads](https://img.shields.io/npm/dm/yh-validator.svg)](https://www.npmjs.com/package/yh-validator)
+[![license](https://img.shields.io/npm/l/yh-validator.svg)](https://github.com/huntergera/yh-validator/main/LICENSE)
 
 A lightweight, modular form validation library written in **TypeScript**, designed to be framework-agnostic and easy to use in any JavaScript or TypeScript project.
 
@@ -124,7 +127,7 @@ console.log(result5.valid);  // false
 console.log(result5.errors); // ["Username is reserved or not allowed."]
 ```
 
-### ↔️ Deep Equality Comparison
+### ↔️ Equality Comparison
 ```ts
 import { isEqual } from 'yh-validator/isEqual';
 
@@ -319,10 +322,17 @@ tests/
 └── userName.test.ts
 ```
 
+## ❓ Why this exists
+There are many username validation libraries — but most either:
+- lack of flexibility in character rules,
+- don’t support Formik/Yup integration well,
+- or don’t support things like blacklists or special character positioning.
+
+yh-validator was built to provide strict, customizable username validation with minimal dependencies — usable in modern React forms or plain JavaScript.
+
 ## 📄 License
 MIT
 This project is licensed under the [MIT License](https://github.com/huntergera/yh-validator/blob/master/LICENSE).
-
 
 ## 📫 Contact
 Feel free to reach out if you have suggestions or need help integrating this package.
