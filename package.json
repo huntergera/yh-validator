@@ -1,6 +1,6 @@
 {
   "name": "yh-validator",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A lightweight form validation library with modular functions",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
