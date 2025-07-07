@@ -362,4 +362,3 @@ Feel free to reach out if you have suggestions or need help integrating this pac
 GitHub: [@huntergera](https://github.com/huntergera)
 
 Email: [yuriihieorhiu@gmail.com](mailto:yuriihieorhiu@gmail.com)
-
