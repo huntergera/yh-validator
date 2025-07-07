@@ -1,3 +1,5 @@
+import ensureString from "./utils/ensureString";
+
 export interface UsernameValidationOptions {
 	minLength?: number;        // Minimum total length of the username (default: 3)
 	maxLength?: number;        // Maximum total length of the username (default: 30)
@@ -30,12 +32,8 @@ export function isUsername(username: string, options: UsernameValidationOptions 
 
 	const errors: string[] = [];
 
-	if (typeof username !== 'string') {
-		return {
-			valid: false,
-			errors: ['Must be a string.'],
-		};
-	}
+	const earlyExit = ensureString(username, 'Username');
+	if (earlyExit) return earlyExit;
 
 	const trimmedUsername = username.trim();
 

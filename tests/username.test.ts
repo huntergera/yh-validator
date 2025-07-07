@@ -91,7 +91,7 @@ describe('isUsername', () => {
 		// @ts-ignore intentionally pass wrong type
 		const result = isUsername(123);
 		expect(result.valid).toBe(false);
-		expect(result.errors).toContain('Must be a string.');
+		expect(result.errors[0]).toMatch(/must be a string/i);
 	});
 
 	it('should return invalid for usernames with spaces when allowSpaces is false (default)', () => {

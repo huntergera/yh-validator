@@ -1,4 +1,14 @@
-export default function ensureString(input: string) {
-	if (input === undefined || input === null) throw new TypeError(`Expected a string but received a ${input}`);
-	if (input.constructor.name !== 'String') throw new TypeError(`Expected a string but received a ${input.constructor.name}`);
+export interface StringValidationResult {
+	valid: boolean;
+	errors: string[];
+}
+
+export default function ensureString(input: unknown, fieldName = 'Input'): StringValidationResult | null {
+	if (typeof input !== 'string') {
+		return {
+			valid: false,
+			errors: [`${fieldName} must be a string, but received ${typeof input}`],
+		};
+	}
+	return null;
 }

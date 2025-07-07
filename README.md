@@ -1,6 +1,6 @@
 # 📦yh-validator
 [![npm version](https://img.shields.io/npm/v/yh-validator.svg)](https://www.npmjs.com/package/yh-validator)
-[![npm downloads](https://img.shields.io/npm/dm/yh-validator.svg)](https://www.npmjs.com/package/yh-validator)
+[![npm total downloads](https://img.shields.io/npm/dt/yh-validator.svg)](https://www.npmjs.com/package/yh-validator)
 [![license](https://img.shields.io/npm/l/yh-validator.svg)](https://github.com/huntergera/yh-validator/main/LICENSE)
 
 A lightweight, modular form validation library written in **TypeScript**, designed to be framework-agnostic and easy to use in any JavaScript or TypeScript project.
@@ -13,7 +13,8 @@ A lightweight, modular form validation library written in **TypeScript**, design
 - 📞 International phone number validation (with country support)
 - 🔐 Configurable password strength validation
 - 👤 Flexible username validation
-- ↔️ Deep equality comparison for objects and arrays
+- ↔️ Equality comparison for objects and arrays
+- 💳 Credit card number validation
 - 🛠 Modular structure — import only what you need
 - 📦 Lightweight and dependency-minimized
 - 🔐 TypeScript-first with full type safety
@@ -134,6 +135,14 @@ import { isEqual } from 'yh-validator/isEqual';
 console.log(isEqual('hello', 'hello')); // true
 ```
 
+### 💳 Credit card number validation
+```ts
+import { isCreditCard } from 'yh-validator/isCreditCard';
+
+console.log(isCreditCard('4111 1111 1111 1111')); // true
+console.log(isCreditCard('1234 5678 9012 3456')); // false
+```
+
 ## 🧩 Integration with Schema Validation Libraries
 You can easily integrate `yh-validator` functions with popular schema validation libraries like `Zod`, `Yup` and others using their custom validation methods. These libraries typically allow you to define custom validation rules that return a boolean (valid/invalid) or throw an error with a custom message.
 
@@ -210,6 +219,17 @@ export const userProfileSchema = yup.object().shape({
 ```
 
 ## 📘 API Reference
+
+| Function             | Description                                                                                                  | Return Type                       |
+|----------------------|--------------------------------------------------------------------------------------------------------------|-----------------------------------|
+| `isEmail(email)`     | Validate email address                                                                                       | `boolean`                         |
+| `isPhone(phone, countryCode?)` | Validate international phone number, `countryCode (optional)` - ISO 2-letter country code (e.g., "US", "UA") | `boolean`                         |
+| `isStrongPassword(password, options?)` | Check password strength                                                                                      | `{ valid: boolean; errors: string[] }` |
+| `isUsername(username, options?)` | Validate username with custom rules                                                                          | `{ valid: boolean; errors: string[] }` |
+| `isEqual(a, b)`      | Equality check between two values                                                                            | `boolean`                         |
+| `isCreditCard(card)`      | Validates credit card number using Luhn algo                                                                            | `boolean`                         |
+
+
 `isEmail(email: string): boolean`
 
 Validates whether the string is a well-formed email address.
@@ -307,6 +327,7 @@ Uses Vitest for unit testing.
 ## 📁 Project Structure
 ```
 src/
+├── isCreditCard.ts         # Credit Card number validator
 ├── isEmail.ts              # Email validator
 ├── isPhone.ts              # Phone validator
 ├── isPassworStrong.ts      # Password validator
@@ -315,11 +336,12 @@ src/
 └── index.ts                # Exports
 
 tests/
+├── creditCard.test.ts
 ├── email.test.ts
 ├── isEqual.test.ts
 ├── password.test.ts
 ├── phone.test.ts
-└── userName.test.ts
+└── username.test.ts
 ```
 
 ## ❓ Why this exists

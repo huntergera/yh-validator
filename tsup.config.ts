@@ -8,6 +8,7 @@ export default defineConfig({
 		isStrongPassword: 'src/isStrongPassword.ts',
 		isUsername: 'src/isUsername.ts',
 		isEqual: 'src/isEqual.ts',
+		isCreditCard: 'src/isCreditCard.ts',
 	},
 	format: ['cjs', 'esm'],
 	dts: true,

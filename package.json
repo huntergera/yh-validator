@@ -1,6 +1,6 @@
 {
   "name": "yh-validator",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "A lightweight form validation library with modular functions",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -36,6 +36,11 @@
       "import": "./dist/isEqual.js",
       "require": "./dist/isEqual.cjs",
       "types": "./dist/isEqual.d.ts"
+    },
+    "./isCreditCard": {
+      "import": "./dist/isCreditCard.js",
+      "require": "./dist/isCreditCard.cjs",
+      "types": "./dist/isCreditCard.d.ts"
     }
   },
   "keywords": [
@@ -59,7 +64,10 @@
     "user",
     "handle",
     "compare",
-    "equality"
+    "equality",
+    "credit card",
+    "luhn algorithm",
+    "card validation"
   ],
   "author": "Yurii Hieorhiu <yuriihieorhiu@gmail.com>",
   "license": "MIT",
