@@ -2,6 +2,7 @@
 [![npm version](https://img.shields.io/npm/v/yh-validator.svg)](https://www.npmjs.com/package/yh-validator)
 [![npm total downloads](https://img.shields.io/npm/dt/yh-validator.svg)](https://www.npmjs.com/package/yh-validator)
 [![license](https://img.shields.io/npm/l/yh-validator.svg)](https://github.com/huntergera/yh-validator/main/LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/huntergera/yh-validator.svg?logo=github&style=flat&colorB=blue)](https://github.com/huntergera/yh-validator/stargazers)
 
 A lightweight, modular form validation library written in **TypeScript**, designed to be framework-agnostic and easy to use in any JavaScript or TypeScript project.
 
@@ -15,6 +16,7 @@ A lightweight, modular form validation library written in **TypeScript**, design
 - 👤 Flexible username validation
 - ↔️ Equality comparison for objects and arrays
 - 💳 Credit card number validation
+- 🌐 URL validation using built-in URL constructor
 - 🛠 Modular structure — import only what you need
 - 📦 Lightweight and dependency-minimized
 - 🔐 TypeScript-first with full type safety
@@ -143,6 +145,16 @@ console.log(isCreditCard('4111 1111 1111 1111')); // true
 console.log(isCreditCard('1234 5678 9012 3456')); // false
 ```
 
+### 🌐 Validate URL
+```ts
+import { isUrl } from 'yh-validator/isUrl';
+
+console.log(isUrl('https://example.com')); // true
+console.log(isUrl('ftp://ftp.site.net'));  // true
+console.log(isUrl('not a url'));           // false
+console.log(isUrl(12345));                 // false
+```
+
 ## 🧩 Integration with Schema Validation Libraries
 You can easily integrate `yh-validator` functions with popular schema validation libraries like `Zod`, `Yup` and others using their custom validation methods. These libraries typically allow you to define custom validation rules that return a boolean (valid/invalid) or throw an error with a custom message.
 
@@ -228,6 +240,7 @@ export const userProfileSchema = yup.object().shape({
 | `isUsername(username, options?)` | Validate username with custom rules                                                                          | `{ valid: boolean; errors: string[] }` |
 | `isEqual(a, b)`      | Equality check between two values                                                                            | `boolean`                         |
 | `isCreditCard(card)`      | Validates credit card number using Luhn algo                                                                            | `boolean`                         |
+| `isUrl(input)`     | Validates if string is a valid URL using `URL()` constructor                                                                            | `boolean`                         |
 
 
 `isEmail(email: string): boolean`
@@ -318,6 +331,10 @@ interface UserNameValidationResult {
 - `b (string)`: The second value to compare.
 - Returns: boolean - true if the two values are equal, false otherwise.
 
+`isUrl(input: unknown): boolean`
+
+Validates whether the input is a valid URL using the built-in URL constructor.
+
 ## 🧪 Running Tests
 ```
 npm test
@@ -329,10 +346,11 @@ Uses Vitest for unit testing.
 src/
 ├── isCreditCard.ts         # Credit Card number validator
 ├── isEmail.ts              # Email validator
-├── isPhone.ts              # Phone validator
-├── isPassworStrong.ts      # Password validator
-├── isUsername.ts           # userName validator
 ├── isEqual.ts              # equality comparison
+├── isPhone.ts              # Phone validator
+├── isStrongPassword.ts     # Password validator
+├── isUsername.ts           # userName validator
+├── isUrl.ts                # URL validator
 └── index.ts                # Exports
 
 tests/
@@ -341,6 +359,7 @@ tests/
 ├── isEqual.test.ts
 ├── password.test.ts
 ├── phone.test.ts
+├── url.test.ts
 └── username.test.ts
 ```
 
