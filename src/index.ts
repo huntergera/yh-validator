@@ -5,3 +5,4 @@ export { isUsername } from './isUsername';
 export { isEqual } from './isEqual';
 export { isCreditCard } from './isCreditCard';
 export { isUrl } from './isUrl';
+export { isDate } from './isDate';

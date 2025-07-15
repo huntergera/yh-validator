@@ -17,6 +17,7 @@ A lightweight, modular form validation library written in **TypeScript**, design
 - ↔️ Equality comparison for objects and arrays
 - 💳 Credit card number validation
 - 🌐 URL validation using built-in URL constructor
+- 📅 Validate Date Format
 - 🛠 Modular structure — import only what you need
 - 📦 Lightweight and dependency-minimized
 - 🔐 TypeScript-first with full type safety
@@ -155,6 +156,21 @@ console.log(isUrl('not a url'));           // false
 console.log(isUrl(12345));                 // false
 ```
 
+### 📅 Validate Date Format
+Supports 3 common formats:
+- `DD/MM/YYYY`
+- `MM-DD-YYYY`
+- `YYYY.MM.DD`
+```ts
+import { isDate } from 'yh-validator/isDate';
+
+console.log(isDate('25/12/2020')); // true
+console.log(isDate('12-25-2020')); // true
+console.log(isDate('2020.12.25')); // true
+console.log(isDate('32/01/2022')); // false
+console.log(isDate('2020/12.25')); // false
+```
+
 ## 🧩 Integration with Schema Validation Libraries
 You can easily integrate `yh-validator` functions with popular schema validation libraries like `Zod`, `Yup` and others using their custom validation methods. These libraries typically allow you to define custom validation rules that return a boolean (valid/invalid) or throw an error with a custom message.
 
@@ -232,15 +248,16 @@ export const userProfileSchema = yup.object().shape({
 
 ## 📘 API Reference
 
-| Function             | Description                                                                                                  | Return Type                       |
-|----------------------|--------------------------------------------------------------------------------------------------------------|-----------------------------------|
-| `isEmail(email)`     | Validate email address                                                                                       | `boolean`                         |
+| Function             | Description                                                                                                 | Return Type                       |
+|----------------------|-------------------------------------------------------------------------------------------------------------|-----------------------------------|
+| `isEmail(email)`     | Validate email address                                                                                      | `boolean`                         |
 | `isPhone(phone, countryCode?)` | Validate international phone number, `countryCode (optional)` - ISO 2-letter country code (e.g., "US", "UA") | `boolean`                         |
-| `isStrongPassword(password, options?)` | Check password strength                                                                                      | `{ valid: boolean; errors: string[] }` |
-| `isUsername(username, options?)` | Validate username with custom rules                                                                          | `{ valid: boolean; errors: string[] }` |
-| `isEqual(a, b)`      | Equality check between two values                                                                            | `boolean`                         |
-| `isCreditCard(card)`      | Validates credit card number using Luhn algo                                                                            | `boolean`                         |
-| `isUrl(input)`     | Validates if string is a valid URL using `URL()` constructor                                                                            | `boolean`                         |
+| `isStrongPassword(password, options?)` | Check password strength                                                                                     | `{ valid: boolean; errors: string[] }` |
+| `isUsername(username, options?)` | Validate username with custom rules                                                                         | `{ valid: boolean; errors: string[] }` |
+| `isEqual(a, b)`      | Equality check between two values                                                                           | `boolean`                         |
+| `isCreditCard(card)`      | Validates credit card number using Luhn algo                                                                           | `boolean`                         |
+| `isUrl(input)`     | Validates if string is a valid URL using `URL()` constructor                                                                           | `boolean`                         |
+| `isDate(date)`     | Validates if the input is a valid date string in one of the supported formats| `boolean`                         |
 
 
 `isEmail(email: string): boolean`
@@ -351,6 +368,7 @@ src/
 ├── isStrongPassword.ts     # Password validator
 ├── isUsername.ts           # userName validator
 ├── isUrl.ts                # URL validator
+├── isDate.ts               # Date validator
 └── index.ts                # Exports
 
 tests/

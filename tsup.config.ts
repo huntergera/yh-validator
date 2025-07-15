@@ -10,6 +10,7 @@ export default defineConfig({
 		isEqual: 'src/isEqual.ts',
 		isCreditCard: 'src/isCreditCard.ts',
 		isUrl: 'src/isUrl.ts',
+		isDate: 'src/isDate.ts',
 	},
 	format: ['cjs', 'esm'],
 	dts: true,
